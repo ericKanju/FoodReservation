@@ -1,13 +1,135 @@
-<ActionBar class="action-bar">
-  <NavigationButton visibility="hidden"></NavigationButton>
-  <GridLayout columns="50, *">
-    <Label class="action-bar-title" text="Browse" colSpan="2"></Label>
 
-    <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+<!--SKELETON-->
+<!-- <GridLayout rows="auto,auto,auto,auto,auto,auto,auto">
+
+<GridLayout row="0" columns="90,*,90" padding="10">
+<StackLayout col="0" backgroundColor="#f7f7f7" height="60" width="60" borderRadius="10">
+</StackLayout>
+<Label col="1" text="Heading 1" class="text-center" fontSize="30" fontWeight="900" verticalAlignment="center" color="#f0f0f0"></Label>
+<StackLayout col="2" backgroundColor="#f7f7f7" height="60" width="60" borderRadius="10">
+</StackLayout>
+</GridLayout>
+
+<GridLayout row="1" columns="90,*,90" padding="10" paddingTop="30">
+  <StackLayout col="0" colSpan="2" backgroundColor="#f7f7f7" marginLeft="15" height="60" borderRadius="10">
+  </StackLayout>
+  <StackLayout col="2" backgroundColor="#f7f7f7" height="60" width="60" borderRadius="10">
+  </StackLayout>
+</GridLayout>
+
+<ScrollView row="2"  orientation="horizontal" scrollBarIndicatorVisible="false">
+  <StackLayout padding="20" paddingTop="30" orientation="horizontal">
+    <StackLayout backgroundColor="#f7f7f7" height="60" width="150" borderRadius="50" marginLeft="5"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="60" width="150" borderRadius="50" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="60" width="150" borderRadius="50" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="60" width="150" borderRadius="50" marginLeft="15"></StackLayout>
+  </StackLayout>
+</ScrollView>
+
+<ScrollView row="3"  orientation="horizontal" scrollBarIndicatorVisible="false">
+  <StackLayout padding="15" paddingTop="30" orientation="horizontal">
+    <StackLayout backgroundColor="#f7f7f7" height="250" width="150" borderRadius="20" marginLeft="5"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="250" width="150" borderRadius="20" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="250" width="150" borderRadius="20" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="250" width="150" borderRadius="20" marginLeft="15"></StackLayout>
+  </StackLayout>
+</ScrollView>
+
+<GridLayout paddingLeft="15" paddingRight="15" row="4" columns="*,*">
+  <Label col="0" text="Heading 1" fontSize="30" fontWeight="900" verticalAlignment="center" color="#f0f0f0"></Label>
+  <Label col="1" text="See all" fontSize="20" fontWeight="300" verticalAlignment="center" horizontalAlignment="right" color="#f0f0f0" ></Label>
+</GridLayout>
+
+<ScrollView row="5"  orientation="horizontal" scrollBarIndicatorVisible="false">
+  <StackLayout padding="15" paddingTop="20" orientation="horizontal">
+    <StackLayout backgroundColor="#f7f7f7" height="150" width="250" borderRadius="20" marginLeft="5"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="150" width="250" borderRadius="20" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="150" width="250" borderRadius="20" marginLeft="15"></StackLayout>
+    <StackLayout backgroundColor="#f7f7f7" height="150" width="250" borderRadius="20" marginLeft="15"></StackLayout>
+  </StackLayout>
+</ScrollView>
+
+<GridLayout marginTop="20" row="6" backgroundColor="#f7f7f7" borderRadius="20" height="70" marginLeft="20" marginRight="20">
+
+</GridLayout>
+
+</GridLayout> -->
+
+
+<GridLayout (loaded)="loadingImages($event);reload()" backgroundColor="#f7f7f7" rows="auto,auto,*,auto">
+  <!--HEADING-->
+<GridLayout row="0" columns="90,*,90" padding="10">
+<!-- <GridLayout (tap)="onDrawerButtonTap()" class="shadow" col="0" backgroundColor="#fff" height="60" width="60" borderRadius="10">
+  <Image src="res://menu" width="40" height="40"></Image>
+</GridLayout> -->
+<StackLayout  col="0" colSpan="2"  backgroundColor="#f3f3f3" marginLeft="5" height="60" borderRadius="20" orientation="horizontal">
+  <Label text="search" color="#d0d0d0" fontSize="25" verticalAlignment="center" marginLeft="20"></Label>
+</StackLayout>
+<GridLayout class="shadow" col="2" backgroundColor="#fff" height="60" width="60" borderRadius="10">
+  <Image src="res://filter" width="40" height="40"></Image>
+</GridLayout>
+</GridLayout>
+
+<!--SEARCH SECTION-->
+<!-- <GridLayout row="1" columns="90,*,90" padding="10" paddingTop="0">
+  <StackLayout  col="0" colSpan="2" backgroundColor="#f3f3f3" marginLeft="15" height="60" borderRadius="20" orientation="horizontal">
+    <Label text="search" color="#d0d0d0" fontSize="25" verticalAlignment="center" marginLeft="20"></Label>
+  </StackLayout>
+  <GridLayout class="shadow" col="2" backgroundColor="#fff" height="60" width="60" borderRadius="10">
+    <Image src="res://filter" width="40" height="40"></Image>
   </GridLayout>
-</ActionBar>
+</GridLayout> -->
 
-<GridLayout class="page__content">
-  <Label class="page__content-icon far" text="&#xf1ea;"></Label>
-  <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+<!--SCROLLING PILLS-->
+<ScrollView row="1"  orientation="horizontal" scrollBarIndicatorVisible="false">
+  <StackLayout  orientation="horizontal">
+<ng-container *ngFor="let cartegory of cartegories">
+  <GridLayout *ngIf="cartegory.active==true" columns="auto,*" backgroundColor="#FEC107" height="60" width="150" borderRadius="50" marginLeft="5" >
+    <GridLayout backgroundColor="#fff" height="50" width="50" borderRadius="50" marginLeft="5" horizontalAlignment="left">
+      <Image [src]="cartegory.image" width="30" height="30"></Image>
+    </GridLayout>
+    <Label col="1" verticalAlignment="center" color="#282828" marginLeft="5" [text]="cartegory.name" ></Label>
+  </GridLayout>
+
+  <GridLayout (tap)="switchCartegory(cartegory.id)" *ngIf="cartegory.active==false" columns="auto,*" backgroundColor="#f0f0f0" height="60" width="150" borderRadius="50" marginLeft="5" >
+    <GridLayout backgroundColor="#fff" height="50" width="50" borderRadius="50" marginLeft="5" horizontalAlignment="left">
+      <Image [src]="cartegory.image" width="30" height="30"></Image>
+    </GridLayout>
+    <Label col="1" verticalAlignment="center" color="#282828" marginLeft="5" [text]="cartegory.name" ></Label>
+  </GridLayout>
+</ng-container>
+
+  </StackLayout>
+</ScrollView>
+
+<!--TOP FOOD-->
+<ScrollView row="2" scrollBarIndicatorVisible="false">
+  <WrapLayout padding="15" paddingTop="20">
+
+    <ng-container *ngFor="let item of food; let i = index">
+      <GridLayout rows="*,*" class="shadow" backgroundColor="#fff" height="250" width="210" marginTop="10" borderRadius="20" marginLeft="5">
+        <Image (tap)="openDec()" row="0" [src]="item.image" class="imag"></Image>
+        <StackLayout row="1" >
+          <Label marginTop="30" [text]="item.name" fontWeight="600" fontSize="15" marginLeft="20" color="#282828"></Label>
+          <Label [text]="item.description" fontWeight="600" fontSize="13" marginLeft="20" color="#bebebe"></Label>
+          <GridLayout columns="*,auto">
+            <Label col="0" verticalAlignment="top" marginTop="5"  [text]="item.price+' '+item.currency" fontWeight="900" fontSize="18" marginLeft="20" color="#282828"></Label>
+            <Label col="1" horizontalAlignment="right" paddingTop="10" verticalAlignment="top" paddingRight="20" class="fas" (tap)="likeFood(i)" text="&#xf004;" fontSize="17" color="#e0e0e0" *ngIf="item.like==false"></Label>
+            <Label col="1" horizontalAlignment="right" paddingTop="10" verticalAlignment="top" paddingRight="20" class="fas" (tap)="likeFood(i)" text="&#xf004;" fontSize="17" color="red" *ngIf="item.like==true"></Label>
+          </GridLayout>
+        </StackLayout>
+      </GridLayout>
+    </ng-container>
+
+  </WrapLayout>
+</ScrollView>
+
+<GridLayout marginTop="0" marginBottom="10" row="3" rows="*,4" columns="*,*,*,*" backgroundColor="#282828" borderRadius="20" height="80" marginLeft="20" marginRight="20">
+  <Image col="0" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://gridinactive" (tap)="openHome()" ></Image>
+  <Image col="1" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://foodmenuactive" ></Image>
+  <Label col="1" row="1" backgroundColor="#FEC107" marginLeft="20" marginRight="20"></Label>
+  <Image col="2" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="27" width="27" src="res://heart" ></Image>
+  <Image col="3" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://cart" (tap)="openCart()" ></Image>
+</GridLayout>
+
 </GridLayout>

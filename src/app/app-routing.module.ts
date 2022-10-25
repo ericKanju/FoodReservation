@@ -24,6 +24,14 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('~/app/settings/settings.module').then((m) => m.SettingsModule),
   },
+  {
+    path: 'preview',
+    loadChildren: () => import('~/app/preview/preview.module').then((m) => m.PreviewModule),
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('~/app/cart/cart.module').then((m) => m.CartModule),
+  },
 ]
 
 @NgModule({

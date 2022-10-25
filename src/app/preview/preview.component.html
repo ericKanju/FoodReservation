@@ -1,0 +1,106 @@
+<GridLayout backgroundColor="#f3f3f3" rows="auto,auto,*">
+  <!--HEADING-->
+  <GridLayout row="0" columns="90,*,90" padding="10">
+    <GridLayout (tap)="back()" class="shadow" col="0" backgroundColor="#fff" height="60" width="60" borderRadius="10">
+      <Label class="fas text-center" text="&#xf053;" verticalAlignment="center" fontSize="30"></Label>
+    </GridLayout>
+    <GridLayout col="2" height="60" width="60" borderRadius="10">
+      <Label verticalAlignment="center" class="fas" text="&#xf004;" fontSize="30" color="red"></Label>
+    </GridLayout>
+  </GridLayout>
+
+  <Image row="1" [src]="image" borderRadius="20"></Image>
+
+  <GridLayout row="2" class="shadow" rows="auto,auto,auto,auto,*,*" backgroundColor="#fff" borderTopLeftRadius="50"
+    borderTopRightRadius="50">
+
+    <!--FIRST ROW-->
+    <GridLayout padding="10" marginTop="-30" columns="*,*">
+      <GridLayout horizontalAlignment="left" marginLeft="30" class="shadow" col="0" columns="*,*" backgroundColor="#fff"
+        height="50" width="90" borderRadius="50">
+        <Label class="fas" horizontalAlignment="right" marginRight="2" text="&#xf005;" color="#FEC107"
+          verticalAlignment="center" fontSize="20"></Label>
+        <Label col="1" horizontalAlignment="left" verticalAlignment="center" marginLeft="2" color="#282828"
+          fontSize="20" fontWeight="600" text="5.0"></Label>
+      </GridLayout>
+
+      <GridLayout horizontalAlignment="right" marginRight="30" class="shadow2" col="1" columns="*,*,*"
+        backgroundColor="#FEC107" height="50" width="150" borderRadius="50">
+        <Label col="0" verticalAlignment="center" color="#282828" class="text-center" fontWeight="600" text="-"
+          fontSize="18"></Label>
+        <Label col="1" verticalAlignment="center" color="#282828" class="text-center" fontWeight="600" text="01"
+          fontSize="18"></Label>
+        <Label col="2" verticalAlignment="center" color="#282828" class="text-center" fontWeight="600" text="+"
+          fontSize="18"></Label>
+      </GridLayout>
+    </GridLayout>
+
+    <!--2ND ROW-->
+    <GridLayout row="1" padding="10" columns="*,*">
+      <Label marginLeft="30" verticalAlignment="center" text="Cheese Burger" fontSize="25" textWrap="true"
+        fontWeight="600" col="0"></Label>
+
+      <StackLayout marginRight="30" marginTop="0" verticalAlignment="center" padding="0" col="1"
+        orientation="horizontal" horizontalAlignment="right">
+        <Label class="fas" marginRight="2" text="&#xf017;" color="#FEC107" verticalAlignment="center"
+          fontSize="20"></Label>
+        <Label col="1" verticalAlignment="center" marginLeft="2" color="#282828" fontSize="20" fontWeight="300"
+          text="10 - 15 mins"></Label>
+      </StackLayout>
+    </GridLayout>
+
+    <!--3RD ROW-->
+    <Label row="2" marginLeft="30" marginRight="30" marginBottom="20" fontSize="15"
+      text="Our simple, classic cheeseburger begins with a 100% pure beef burger seasoned with just a pinch of salt and pepper."
+      color="#bebebe" textWrap="true"></Label>
+
+    <!--4TH ROW-->
+    <GridLayout row="3" padding="10" columns="*,*">
+      <Label marginLeft="30" verticalAlignment="center" text="Toping for you" fontSize="25" textWrap="true"
+        fontWeight="500" col="0"></Label>
+      <Label marginRight="30" color="#d06316" verticalAlignment="center" horizontalAlignment="right" text="clear"
+        fontSize="25" textWrap="true" fontWeight="500" col="1"></Label>
+    </GridLayout>
+
+    <!--5TH ROW-->
+    <ScrollView row="4"  orientation="horizontal" scrollBarIndicatorVisible="false">
+      <StackLayout padding="15" paddingTop="20" orientation="horizontal">
+    
+    
+          <GridLayout  backgroundColor="#f3f3f3" height="250" width="150" borderRadius="20" marginLeft="5">
+            <Image row="0" [src]="salad" borderRadius="20"></Image>
+          </GridLayout>
+          <GridLayout  backgroundColor="#f3f3f3" height="250" width="150" borderRadius="20" marginLeft="5">
+            <Image row="0" [src]="chilli" borderRadius="20"></Image>
+          </GridLayout>
+          <GridLayout  backgroundColor="#f3f3f3" height="250" width="150" borderRadius="20" marginLeft="5">
+            <Image row="0" [src]="ketchup" borderRadius="20"></Image>
+          </GridLayout>
+          <GridLayout   backgroundColor="#f3f3f3" height="250" width="150" borderRadius="20" marginLeft="5">
+            <Image row="0" [src]="mayonise" borderRadius="20"></Image>
+          </GridLayout>
+    
+      </StackLayout>
+    </ScrollView>
+
+        <!--5TH ROW-->
+
+        <GridLayout row="5" columns="*,*">
+
+          <StackLayout verticalAlignment="center" col="0" marginLeft="30">
+            <Label text="Total price" color="#bebebe" fontWeight="600" fontSize="20"></Label>
+            <StackLayout orientation="horizontal">
+              <Label text="Ksh." color="#FEC107" fontSize="30" fontWeight="600"></Label>
+              <Label text="500" color="#000" fontSize="30" fontWeight="600" marginLeft="5"></Label>
+            </StackLayout>
+          </StackLayout>
+
+          <GridLayout backgroundColor="#000" verticalAlignment="center" height="70" borderBottomLeftRadius="25" borderBottomRightRadius="25" borderTopRightRadius="25" borderTopLeftRadius="5"  marginRight="30" col="1">
+            <Label verticalAlignment="center" horizontalAlignment="center" text="Go To Cart" color="#fff" fontSize="20"></Label>
+          </GridLayout>
+
+        </GridLayout>
+
+  </GridLayout>
+
+</GridLayout>

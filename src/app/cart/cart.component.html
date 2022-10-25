@@ -1,0 +1,85 @@
+<GridLayout backgroundColor="#fff" rows="auto,auto,auto,*,auto">
+  <!--HEADING-->
+  <GridLayout backgroundColor="#f3f3f3" row="0" columns="90,*,90" padding="10">
+    <GridLayout (tap)="back()" class="shadow" col="0" backgroundColor="#fff" height="60" width="60" borderRadius="10">
+      <Label class="fas text-center" text="&#xf053;" verticalAlignment="center" fontSize="30"></Label>
+    </GridLayout>
+
+    <StackLayout row="0" col="1" paddingBottom="40">
+      <Label marginLeft="20" fontSize="30" color="black" text="My"></Label>
+      <Label marginLeft="20" fontSize="30" color="black" text="Cart List" fontWeight="600"></Label>
+    </StackLayout>
+  </GridLayout>
+
+
+
+<ScrollView  backgroundColor="#f3f3f3" row="1">
+  <StackLayout>
+    <GridLayout  columns="150,*,80">
+      <Image col="0" [src]="image" borderRadius="20"></Image>
+    
+      <StackLayout verticalAlignment="center" col="1">
+        <Label fontSize="20" text="Cheese burger" fontWeight="600"></Label>
+        <StackLayout orientation="horizontal">
+          <Label fontSize="15" text="Ksh 500" color="#000"></Label>
+          <Label marginLeft="20" fontSize="15" color="#b0b0b0" text="X2"></Label>
+        </StackLayout>
+      </StackLayout>
+    
+      <StackLayout verticalAlignment="center" col="2">
+        <StackLayout verticalAlignment="center" width="30" height="65" backgroundColor="#000" borderRadius="8" padding="0" margin="0">
+          <button  color="#fff" borderRadius="8" fontSize="20" height="30" width="30" backgroundColor="#666666" text="+" verticalAlignment="top" marginTop="0"></button>
+          <button  color="#fff" borderRadius="8" fontSize="20" height="30" width="30" backgroundColor="#000" text="-" marginTop="0"></button>
+        </StackLayout>
+      </StackLayout>
+    </GridLayout>
+
+    <GridLayout  columns="150,*,80">
+      <Image col="0" [src]="salad" borderRadius="20"></Image>
+      <StackLayout verticalAlignment="center" col="1">
+        <Label fontSize="20" text="Salad" fontWeight="600"></Label>
+        <StackLayout orientation="horizontal">
+          <Label fontSize="15" text="Ksh 100" color="#000"></Label>
+          <Label marginLeft="20" fontSize="15" color="#b0b0b0" text="X1"></Label>
+        </StackLayout>
+      </StackLayout>
+    
+      <StackLayout verticalAlignment="center" col="2">
+        <StackLayout verticalAlignment="center" width="30" height="65" backgroundColor="#000" borderRadius="8" padding="0" margin="0">
+          <button  color="#fff" borderRadius="8" fontSize="20" height="30" width="30" backgroundColor="#666666" text="+" verticalAlignment="top" marginTop="0"></button>
+          <button  color="#fff" borderRadius="8" fontSize="20" height="30" width="30" backgroundColor="#000" text="-" marginTop="0"></button>
+        </StackLayout>
+      </StackLayout>
+    </GridLayout>
+  </StackLayout>
+</ScrollView>
+
+<Label  backgroundColor="#f3f3f3" row="2" text="&#xf02b; Do you have any discount code?" fontSize="15" class="fas text-center" padding="30"></Label>
+<StackLayout row="3" backgroundColor="#f3f3f3">
+  <GridLayout rows="auto,auto,auto,auto,*,*" columns="*,*" backgroundColor="#fff" borderTopLeftRadius="50"
+    borderTopRightRadius="50">
+  <Label text="Subtotal" marginLeft="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="0" col="0"></Label>
+  <Label text="Ksh 600" horizontalAlignment="right" marginRight="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="0" col="1"></Label>
+
+  <Label text="Discount" marginLeft="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="1" col="0"></Label>
+  <Label text="Ksh 0" horizontalAlignment="right" marginRight="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="1" col="1"></Label>
+
+  <Label text="Add-ons" marginLeft="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="2" col="0"></Label>
+  <Label text="Ksh 155" horizontalAlignment="right" marginRight="30" fontSize="20" color="#b0b0b0" marginTop='30'  row="2" col="1"></Label>
+
+  <Label text="- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -" fontSize="25" marginTop="20" color="#000" class="text-center" row="3" col="0" colSpan="2"></Label>
+
+  <Label text="Total" marginLeft="30" fontSize="30" color="#000" marginTop='30' fontWeight="600"  row="4" col="0"></Label>
+  <Label text="Ksh 755" horizontalAlignment="right" marginRight="30" fontSize="30" color="#000" fontWeight="600" marginTop='30'  row="4" col="1"></Label>
+  <Button text="Checkout  &#xf061;" class="fas" color="#000" backgroundColor="#FEC107" row="5" col="0" colSpan="2" fontSize="20" borderRadius="30" androidElevation="0" fontWeight="600"></Button>
+  </GridLayout>
+</StackLayout>
+  <GridLayout marginTop="20" marginBottom="10" row="4" rows="*,4" columns="*,*,*,*" backgroundColor="#282828" borderRadius="20" height="80" marginLeft="20" marginRight="20">
+    <Image col="0" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://gridinactive" (tap)="openHome()" ></Image>
+    <Image col="1" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://foodmenu" (tap)="openBrowse()" ></Image>
+    <Image col="2" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="27" width="27" src="res://heart" ></Image>
+    <Image col="3" horizontalAlignment="center"  color="#fff" verticalAlignment="center" height="30" width="30" src="res://cartactive"  ></Image>
+    <Label col="3" row="1" backgroundColor="#FEC107" marginLeft="20" marginRight="20"></Label>
+  </GridLayout>
+
+</GridLayout>
