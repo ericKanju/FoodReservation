@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
+import { ActivityIndicator, Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
 import { FoodService} from '../services/food.service'
 import { CartegoryModel } from '../models/cartegory.model';
 import { FoodModel } from '../models/food.model';
@@ -45,11 +45,41 @@ export class CartComponent implements OnInit {
   }
 
   back(){
+    this.isBusy = true;
+
+    setTimeout(() =>{
     this.router.back();
+  }, 10);
   }
 
   openBrowse(){
     this.router.navigate(['/browse']);
+  }
+
+  reload(){
+    this.isBusy = false;
+  }
+
+  isBusy: boolean = false;
+
+  onBusyChanged(args: EventData) {
+      let indicator: ActivityIndicator = <ActivityIndicator>args.object;
+      console.log("indicator.busy changed to: " + indicator.busy);
+  }
+
+  navigating(args){
+    this.isBusy = true;
+
+    setTimeout(() =>{
+      if(args=='home'){
+        this.router.navigate(['/home']);
+      }
+      if(args=='browse'){
+        this.router.navigate(['/browse']);
+      }
+
+     }, 10);
+
   }
 
 }

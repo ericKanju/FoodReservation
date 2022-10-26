@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
+import { ActivityIndicator, Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
 import { RouterExtensions } from '@nativescript/angular';
 import { CartegoryModel } from '../models/cartegory.model';
 import { FavouriteModel } from '../models/favourites.model';
@@ -75,12 +75,13 @@ export class BrowseComponent implements OnInit {
 
   reload(){
     this.hover='grid';
+    this.isBusy = false;
   }
-  
+
   openCart(){
     this.hover='cart';
     this.router.navigate(['/cart']);
-   
+
   }
 
   openHome(){
@@ -109,5 +110,27 @@ export class BrowseComponent implements OnInit {
     if(args==12){
       this.food = this.foodService.african;
     }
+  }
+
+  isBusy: boolean = false;
+
+  onBusyChanged(args: EventData) {
+      let indicator: ActivityIndicator = <ActivityIndicator>args.object;
+      console.log("indicator.busy changed to: " + indicator.busy);
+  }
+
+  navigating(args){
+    this.isBusy = true;
+
+    setTimeout(() =>{
+      if(args=='home'){
+        this.router.navigate(['/home']);
+      }
+      if(args=='cart'){
+        this.router.navigate(['/cart']);
+      }
+
+     }, 10);
+
   }
 }

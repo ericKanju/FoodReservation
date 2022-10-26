@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
+import { ActivityIndicator, Application, Color, EventData, isAndroid, Observable, Page, View } from '@nativescript/core'
 import { FoodService} from './../services/food.service'
 import { CartegoryModel } from '../models/cartegory.model';
 import { FoodModel } from '../models/food.model';
@@ -26,6 +26,8 @@ export class HomeComponent implements OnInit {
     private foodService:FoodService,
     private router:RouterExtensions
   ) {
+
+
     page.actionBarHidden=true;
     if (isAndroid) {
       this.page.androidStatusBarBackground = new Color(BASE_COLOR);
@@ -94,27 +96,49 @@ export class HomeComponent implements OnInit {
 
   openDec(){
     this.router.navigate(['/preview'])
+  //  this.isBusy = false;
   }
 
   reload(){
     this.hover='grid';
-  }
-  
-  openCart(){
-    this.hover='cart';
-    this.router.navigate(['/cart']);
+    this.isBusy=false;
   }
 
-  openBrowse(){
-    this.router.navigate(['/browse']);
+  // openCart(){
+  //   this.isBusy = true;
+  //   this.hover='cart';
+  //   this.router.navigate(['/cart']);
+  // //  this.isBusy = false;
+  // }
+
+  // openBrowse(){
+  //   this.isBusy = true;
+  //   this.router.navigate(['/browse']);
+  //  // this.isBusy = false;
+  // }
+
+
+  isBusy: boolean = false;
+
+  onBusyChanged(args: EventData) {
+      let indicator: ActivityIndicator = <ActivityIndicator>args.object;
+      console.log("indicator.busy changed to: " + indicator.busy);
   }
 
+  navigating(args){
+    this.isBusy = true;
 
+    setTimeout(() =>{
+      if(args=='browse'){
+        this.router.navigate(['/browse']);
+      }
+      if(args=='cart'){
+        this.router.navigate(['/cart']);
+      }
 
+     }, 10);
 
-
-
-
+  }
 
 
 }
